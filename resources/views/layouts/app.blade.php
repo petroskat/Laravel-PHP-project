@@ -18,6 +18,7 @@
 			  src="https://code.jquery.com/jquery-3.2.1.js"
 			  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 			  crossorigin="anonymous"></script>
+
         {{--image Modal pop script  --}}
     <script>
     $(function() {
@@ -28,6 +29,8 @@
     });
     </script>
 
+
+
       <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -35,6 +38,27 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style media="screen">
+      html {
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        position: relative;
+        margin: 0;
+        padding-bottom: 6rem;
+        min-height: 100%;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -44,6 +68,18 @@
           @yield('content')
         </div>
     </div>
+
+    <div class="footer" style="position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;">
+      <strong>&copy; Copyright <?php echo (int)date('Y'); ?> P.k</strong>
+    </div>
+
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

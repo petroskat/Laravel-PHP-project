@@ -45,7 +45,8 @@ class AdvsController extends Controller
       $this->validate($request,[
         'title' => 'required',
         'description' => 'required',
-        'cover_image'=> 'image|nullable|max:1999'
+        'cover_image'=> 'image|nullable|max:1999',
+        'Price' => 'required'
       ]);
 
       // handle image upload
@@ -71,6 +72,9 @@ class AdvsController extends Controller
       $adv->body = $request->input('description');
       $adv->user_id = auth()->user()->id;
       $adv->cover_image = $filenameToStore;
+      $adv->category = $request->input('Category');
+      $adv->price = $request->input('Price');
+      $adv->region = $request->input('Region');
       $adv->save();
 
       return redirect('/advs')->with('success','Advertisment sucessfully Created');
@@ -141,6 +145,9 @@ class AdvsController extends Controller
       if ($request->hasFile('cover_image')) {
         $adv->cover_image = $filenameToStore;
       }
+      $adv->category = $request->input('Category');
+      $adv->price = $request->input('Price');
+      $adv->region = $request->input('Region');
       $adv->save();
 
       return redirect('/advs')->with('success','Advertisment sucessfully updated!!');

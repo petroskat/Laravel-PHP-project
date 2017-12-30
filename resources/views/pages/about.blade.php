@@ -2,10 +2,14 @@
 
 
 @section('content')
-    <h1>About Page</h1>
+    <h1 class="text-center">About Page</h1>
     <div class="container">
       <div class="jumbotron text-center">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>This is an Advertisement patform written in php Laravel.With full use of the MVC Model
+         its a good base for a lot of projects and ideas.It was entertaining and taught me a lot.</p>
+         <cite>Me,2017</cite>
+         
+
       </div>
     </div>
 

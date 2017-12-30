@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
+Route::post('/search','SearchesController@search');

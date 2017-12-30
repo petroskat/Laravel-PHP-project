@@ -3,17 +3,26 @@
 @section('content')
   <div class="row text-center">
     <a href="/advs" onclick="goBack()" class="btn btn-link pull-right">Go Back</a>
-    <div class="col-xs-6 col-xs-offset-3">
+    <h1>{{$adv->title}}</h1>
+    <div class=".col-xs-4 col-xs-offset-4">
       <table>
         <tr>
-          <td><h1>{{$adv->title}}</h1></td>
+          <td></td>
         </tr>
         <tr>
-          <td><a href="#" class="pop"><img height="150" width="250" src="/storage/cover_image/{{$adv->cover_image}}" alt="Advertisement_Image"></a></td>
+          <td><a href="#" class="pop"><img height="180" width="320" src="/storage/cover_image/{{$adv->cover_image}}" alt="Advertisement_Image"></a></td>
         </tr>
       </table>
     </div>
   </div>
+  <br>
+  <table style="width:100%">
+    <tr>
+      <th><strong>Category : </strong>{{$adv->category}}</th>
+      <th><strong>Region : </strong>{{$adv->region}}</th>
+      <th><strong>Price : </strong>{{$adv->price}} &euro;</th>
+    </tr>
+  </table>
   <br>
   <div class="container row">
     <div class="jumbotron">
