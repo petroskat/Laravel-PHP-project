@@ -21,5 +21,6 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
 
+/*Search routes , the get one is for keyword search, the post one is for form-searching..*/
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');
 Route::post('/search','SearchesController@search');
