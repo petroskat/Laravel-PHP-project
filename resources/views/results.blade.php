@@ -6,7 +6,7 @@
   <div class="container">
     @if (count($advs) > 0)
       @foreach ($advs as $adv)
-        <div class="well">
+        <div class="well grow text-center">
           <div class="row">
             <div class="col-md-4 col-sm-4">
               <img height="150" width="200" src="/storage/cover_image/{{$adv->cover_image}}" alt="Advertisement_Image">

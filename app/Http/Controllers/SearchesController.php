@@ -24,20 +24,29 @@ class SearchesController extends Controller
   public function search(Request $request)
   {
     $this->validate($request,[
-      'minPrice' => 'required|integer',
-      'maxPrice' => 'required|integer|min:'.($request->get('minPrice')+1)
+      'minPrice' => 'integer|nullable',
+      'maxPrice' => 'integer|nullable|min:'.($request->get('minPrice')+1)
     ]);
 
     $category = $request->input('Category');
     $min = $request->input('minPrice');
     $max = $request->input('maxPrice');
-    $region = $request->input('Region');
+    $region = [$request->input('Region')];
 
+    if ($min == '') {
+      $min = 0 ;
+    }
+    if ($max == '') {
+      $max = 20001 ;
+    }
+    if ($region == ['0']) {
+      $region = ['Athens','Thessaloniki','Iraklio','Rhodos','Kozani'];
+    }
 
 
     $advs = Adv::where('category','=',$category)
                  ->whereBetween('price',[$min,$max])
-                 ->where('region','=',$region)
+                 ->whereIn('region',$region)
     ->paginate(4);
 
 

@@ -3,7 +3,7 @@
 
 @section('content')
   <div class="jumbotron text-center row">
-    <h1>The best Advertisement app !!</h1>
+    <h2>The best Advertisement app around !!</h2>
     @if (Auth::guest())
       <p>Welcome Guest .. feel free to browse ads Register and add yours !!</p>
       <p>
@@ -14,10 +14,10 @@
       <p>{{auth()->user()->name}}, welcome .. feel free to browse ads and add yours !!</p>
     @endif
     <br><hr><br>
-    <div class="col-xs-6 col-xs-offset-3">
+    <div id="search_m div" class="col-xs-6">
       <div class="Search_machine ">
           <form class="form-group" action="/search/" method="GET">
-              <label for="s">Want a quick result?? </label><br>
+              <label for="s"><u>Want a quick result??</u></label><br>
               <input class="form-control text-center" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search Advertisements"/>
               <small>Press 'Enter'</small>
           </form>
@@ -45,11 +45,14 @@
 
           <div class="form-group">
             {!!Form::label('Region', 'Region : ')!!}
-            {!! Form::select('Region', ['Athens'=>'Athens','Thessaloniki'=>'Thessaloniki','Iraklio'=>'Iraklio','Rhodos'=>'Rhodos','Kozani'=>'Kozani'],null,['class'=>'form-control text-center']) !!}
+            {!! Form::select('Region', ['','Athens'=>'Athens','Thessaloniki'=>'Thessaloniki','Iraklio'=>'Iraklio','Rhodos'=>'Rhodos','Kozani'=>'Kozani'],null,['class'=>'form-control text-center']) !!}
           </div>
           {{Form::Submit('Search',['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
       </div>
+    </div>
+    <div class="sidebar col-xs-4 pull-right">
+      @include('inc.sidebar')
     </div>
   </div>
 

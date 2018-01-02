@@ -178,4 +178,10 @@ class AdvsController extends Controller
 
 
     }
+    public function sidebar()
+    {
+        return view('inc.sidebar');
+    }
+
+
 }

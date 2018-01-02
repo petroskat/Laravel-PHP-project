@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Adv;
 
 use Illuminate\Http\Request;
 
@@ -8,7 +9,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-      return view('pages.index');
+      $advs = Adv::orderBy('updated_at',"desc")->take(5)->get();
+      return view('pages.index')->with('advs',$advs);
     }
     public function about()
     {

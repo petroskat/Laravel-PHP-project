@@ -17,6 +17,7 @@ Route::get('/services', 'PagesController@services');
 
 Route::resource('advs','AdvsController');
 
+
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
