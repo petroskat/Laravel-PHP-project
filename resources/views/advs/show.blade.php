@@ -15,11 +15,11 @@
     </div>
   </div>
   <br>
-  <table style="width:100%">
+  <table style="width:100%;">
     <tr>
-      <th><strong>Category : </strong>{{$adv->category}}</th>
-      <th><strong>Region : </strong>{{$adv->region}}</th>
-      <th><strong>Price : </strong>{{$adv->price}} &euro;</th>
+      <th style="text-align:center"><strong>Category : </strong>{{$adv->category}}</th>
+      <th style="text-align:center"><strong>Region : </strong>{{$adv->region}}</th>
+      <th style="text-align:center"><strong>Price : </strong>{{$adv->price}} &euro;</th>
     </tr>
   </table>
   <br>
@@ -65,7 +65,7 @@
         <img src="" class="imagepreview" style="width: 100%;" >
       </div>
       <div class="modal-footer">
-        <p class="text-center">{{$adv->title}}</p>
+        <h4 class="text-center">{{$adv->title}}</h4>
       </div>
       </div>
     </div>

@@ -9,16 +9,21 @@ use Illuminate\Support\Facades\DB;
 class SearchesController extends Controller
 {
   public function getIndex( Request $request ) {
-  $s = $request->query('s');
 
-  // Query and paginate result
-  $advs = Adv::where('title','like', "%" . $s . "%")
-      ->orWhere('body','like', "%" . $s . "%")
-      ->orWhere('region','like',"%" . $s . "%")
-      ->orWhere('category','like',"%" . $s . "%")
-      ->paginate(4);
 
-  return view('results', ['advs' => $advs, 's' => $s ]);
+    $s = $request->query('search');
+    if ($s == '') {
+      return view('results')->with('advs',NULL);
+    }
+
+    // Query and paginate result
+    $advs = Adv::where('title','like', "%" . $s . "%")
+        ->orWhere('body','like', "%" . $s . "%")
+        ->orWhere('region','like',"%" . $s . "%")
+        ->orWhere('category','like',"%" . $s . "%")
+        ->paginate(4);
+
+    return view('results', ['advs' => $advs, 's' => $s ]);
   }
 
   public function search(Request $request)

@@ -13,19 +13,10 @@
     @else
       <p>{{auth()->user()->name}}, welcome .. feel free to browse ads and add yours !!</p>
     @endif
-    <br><hr><br>
-    <div id="search_m div" class="col-md-6 col-xs-12 text-center">
-      <div class="Search_machine ">
-          <form class="form-group" action="/search/" method="GET">
-              <label for="s"><u>Want a quick result??</u></label><br>
-              <input class="form-control text-center" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search Advertisements"/>
-              <small>Press 'Enter'</small>
-          </form>
-      </div>
-      <br>
-      <div class='form-group'>
-        <h3><strong><u>Or use the above search system : </u></strong></h3>
-        <hr>
+    <hr><br>
+    <div class="">
+      <div class='col-md-6 col-xs-12 text-center form-group'>
+        <h3><u><b>Search:</b></u></h3>
         {!! Form::open(['action'=>['SearchesController@search'],'method'=>'POST']) !!}
 
           <div class="form-group">
@@ -52,9 +43,9 @@
       </div>
     </div>
     <div class="col-md-2">
-
+      {{-- just to fill the void --}}
     </div>
-    <div class="sidebar col-md-4 col-xs-12 shadow" style="background-color:white;border-radius: 25px;">
+    <div class="sidebar col-md-4 col-xs-12 shadow" style="border-radius: 25px;">
       @include('inc.sidebar')
     </div>
   </div>

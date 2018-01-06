@@ -9,6 +9,7 @@ class PagesController extends Controller
 {
     public function index()
     {
+      //get some ads for the sidebar
       $advs = Adv::orderBy('updated_at',"desc")->take(5)->get();
       return view('pages.index')->with('advs',$advs);
     }

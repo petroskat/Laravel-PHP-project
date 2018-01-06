@@ -33,12 +33,6 @@
         <h4>We couldnt find any Advertisments :(</h4>
         <strong>But you can try again..</strong>
       </div>
-      <div class="Search_machine">
-          <form class="form-group" action="/search/" method="GET">
-              <input class="form-control text-center" type="text" name="s" value="{{ Request::query('s') }}" placeholder="Search Advertisements"/>
-          </form>
-      </div>
-
     @endif
   </div>
 @endsection

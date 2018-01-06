@@ -2,7 +2,7 @@
   <h3><u><b>Latest Advertisements</b></u></h3>
   <hr>
 
-  <div style="overflow-y: scroll; height:390px;" class="container">
+  <div style="overflow-y: scroll; height:270px;" class="container">
     @if (count($advs) > 0)
       @foreach ($advs as $adv)
         <a href="/advs/{{$adv->id}}"><div class="well shrink text-center" style="border-radius: 25px;">

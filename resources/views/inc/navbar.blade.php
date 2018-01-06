@@ -11,9 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+            <a class="navbar-brand" href="/">{{ config('app.name', 'AdvApp') }}</a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -23,6 +21,16 @@
               <li><a href="/services">Services</a></li>
               <li><a href="/advs">Advertisments</a></li>
             </ul>
+            <div class="col-sm-3 col-md-3 col-md-offset-1">
+              <form class="navbar-form" role="search" action="/search/" method="GET">
+                <div class="input-group">
+                  <input class="form-control text-center" type="text" name="search" value="{{ Request::query('search') }}" placeholder="Search.."/>
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
