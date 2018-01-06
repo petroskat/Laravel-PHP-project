@@ -7,14 +7,14 @@
     @if (Auth::guest())
       <p>Welcome Guest .. feel free to browse ads Register and add yours !!</p>
       <p>
-        <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
-        <a class="btn btn-success btn-lg" href="/register" role="button">Register</a>
+        <a class="btn btn-primary" href="/login" role="button">Login</a>
+        <a class="btn btn-success" href="/register" role="button">Register</a>
       </p>
     @else
       <p>{{auth()->user()->name}}, welcome .. feel free to browse ads and add yours !!</p>
     @endif
     <br><hr><br>
-    <div id="search_m div" class="col-xs-6">
+    <div id="search_m div" class="col-md-6 col-xs-12 text-center">
       <div class="Search_machine ">
           <form class="form-group" action="/search/" method="GET">
               <label for="s"><u>Want a quick result??</u></label><br>
@@ -51,7 +51,10 @@
         {!! Form::close() !!}
       </div>
     </div>
-    <div class="sidebar col-xs-4 pull-right">
+    <div class="col-md-2">
+
+    </div>
+    <div class="sidebar col-md-4 col-xs-12 shadow" style="background-color:white;border-radius: 25px;">
       @include('inc.sidebar')
     </div>
   </div>

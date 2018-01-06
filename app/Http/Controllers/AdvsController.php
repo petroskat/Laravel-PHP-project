@@ -89,6 +89,9 @@ class AdvsController extends Controller
     public function show($id)
     {
         $adv = Adv::find($id);
+        if (!$adv) {
+          return redirect('/')->with('error','Item does not exist or was removed :(');
+        }
         return view('advs.show')->with("adv",$adv);
     }
 
@@ -101,6 +104,10 @@ class AdvsController extends Controller
     public function edit($id)
     {
       $adv = Adv::find($id);
+
+      if (!$adv) {
+        return redirect('/')->with('error','Item does not exist or was removed :(');
+      }
 
       //check if the user is the author so he can edit
       if (auth()->user()->id == $adv->user_id) {
@@ -139,7 +146,6 @@ class AdvsController extends Controller
       }
 
       // Update Advertisment
-      $adv = Adv::find($id);
       $adv->title = $request->input('title');
       $adv->body = $request->input('description');
       if ($request->hasFile('cover_image')) {
@@ -162,6 +168,9 @@ class AdvsController extends Controller
     public function destroy($id)
     {
         $adv = Adv::find($id);
+        if (!$adv) {
+          return redirect('/')->with('error','Item does not exist or was removed :(');
+        }
         //check if the user is the author so he can edit
         if (auth()->user()->id == $adv->user_id) {
           $adv->delete();

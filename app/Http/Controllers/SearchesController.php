@@ -12,10 +12,10 @@ class SearchesController extends Controller
   $s = $request->query('s');
 
   // Query and paginate result
-  $advs = Adv::where('title','like', "%$s%")
-      ->orWhere('body','like', "%$s%")
-      ->orWhere('region','like',"%$s%")
-      ->orWhere('category','like',"%$s%")
+  $advs = Adv::where('title','like', "%" . $s . "%")
+      ->orWhere('body','like', "%" . $s . "%")
+      ->orWhere('region','like',"%" . $s . "%")
+      ->orWhere('category','like',"%" . $s . "%")
       ->paginate(4);
 
   return view('results', ['advs' => $advs, 's' => $s ]);
@@ -25,7 +25,7 @@ class SearchesController extends Controller
   {
     $this->validate($request,[
       'minPrice' => 'integer|nullable',
-      'maxPrice' => 'integer|nullable|min:'.($request->get('minPrice')+1)
+      'maxPrice' => 'integer|nullable|min:'.($request->get('minPrice'))
     ]);
 
     $category = $request->input('Category');

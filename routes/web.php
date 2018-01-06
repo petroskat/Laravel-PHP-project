@@ -21,6 +21,8 @@ Route::resource('advs','AdvsController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/changePassword','DashboardController@showChangePasswordForm');
+Route::post('/changePassword','DashboardController@changePassword')->name('changePassword');
 
 /*Search routes , the get one is for keyword search, the post one is for form-searching..*/
 Route::get('search/{s?}', 'SearchesController@getIndex')->where('s', '[\w\d]+');

@@ -2,15 +2,14 @@
 
 @section('content')
   <div class="row text-center">
-    <a href="/advs" onclick="goBack()" class="btn btn-link pull-right">Go Back</a>
     <h1>{{$adv->title}}</h1>
-    <div class=".col-xs-4 col-xs-offset-4">
+    <div class="col-md-4 col-xs-12 col-md-offset-4">
       <table>
         <tr>
           <td></td>
         </tr>
         <tr>
-          <td><a href="#" class="pop"><img height="180" width="320" src="/storage/cover_image/{{$adv->cover_image}}" alt="Advertisement_Image"></a></td>
+          <td><a role="button" class="pop"><img height="180" width="320" src="/storage/cover_image/{{$adv->cover_image}}" alt="Advertisement_Image"></a></td>
         </tr>
       </table>
     </div>
@@ -29,13 +28,13 @@
       {!!$adv->body!!}
     </div>
 
-    <div>
+    <div class="text-center">
       <small>Created on {{$adv->created_at}}</small>
       @if ($adv->created_at != $adv->updated_at)
         <small> and updated on {{$adv->updated_at}}</small>
       @endif
     </div>
-    <div>
+    <div class="text-center">
       <small>Written by {{$adv->user->name}}</small>
     </div>
     <br>
@@ -60,7 +59,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close btn-lg" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <img src="" class="imagepreview" style="width: 100%;" >

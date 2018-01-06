@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
+
+
 class DashboardController extends Controller
 {
     /**
@@ -25,6 +28,35 @@ class DashboardController extends Controller
     {
       $user_id = auth()->user()->id;
       $user = User::find($user_id);
-      return view('dashboard')->with('advs',$user->advs);
+      return view('dashboard')->with(['advs'=>$user->advs,'user'=>$user]);
     }
+    
+    public function showChangePasswordForm(){
+        return view('auth.changepassword');
+    }
+
+    public function changePassword(Request $request){
+      if (!(Hash::check($request->get('current-password'), auth()->user()->password))) {
+      // The passwords matches
+        return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+      }
+      if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+      //Current password and new password are same
+        return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+      }
+      $validatedData = $request->validate([
+      'current-password' => 'required',
+      'new-password' => 'required|string|min:6|confirmed',
+      ]);
+
+      //Change Password after the validation and security tests
+      $user = auth()->user();
+      $user->password = bcrypt($request->get('new-password'));
+      $user->save();
+      return redirect()->back()->with("success","Password changed successfully !");
+}
+
+
+
+
 }

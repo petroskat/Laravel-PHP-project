@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- textarea editor  --}}
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
@@ -19,14 +19,25 @@
     <style media="screen">
       .grow:hover
       {
-            -webkit-transform: scale(1.2);
-            -ms-transform: scale(1.2);
-            transform: scale(1.2);
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+
+      }
+      .shrink:hover
+      {
+            -webkit-transform: scale(0.9);
+            -ms-transform: scale(0.9);
+            transform: scale(0.9);
 
       }
       .well
       {
         transition:all 0.3s ease;
+
+      }
+      .shadow{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
     </style>
 
@@ -57,6 +68,11 @@
         min-height: 100%;
         font-family: "Helvetica Neue", Arial, sans-serif;
       }
+      img{
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
       a,a:hover{
         color: black;
       }
@@ -65,7 +81,7 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        <div class="container">
+        <div class="container shadow" style="border-radius: 25px;">
           @include('inc.messages')
           @yield('content')
         </div>

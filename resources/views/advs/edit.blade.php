@@ -5,22 +5,22 @@
   <div class="container">
     {!! Form::open(['action'=>['AdvsController@update',$adv->id],'method'=>'POST','enctype'=>'multipart/form-data']) !!}
 
-      <div class="form-group col-xs-4">
+      <div class="form-group col-md-4 col-xs-12">
         {{Form::label('title', 'Title')}}
         {{Form::text('title',$adv->title,['class'=>'form-control','placeholder'=>'Title'])}}
       </div>
 
-      <div class="form-group col-xs-4">
+      <div class="form-group col-md-4 col-xs-12">
         {!!Form::label('Category', 'Category : ')!!}
         {!! Form::select('Category', ['One'=>'One','Two'=>'Two','Three'=>'Three','Four'=>'Four','Five'=>'Five'],$adv->category,['class'=>'form-control text-center']) !!}
       </div>
 
-      <div class="form-group col-xs-4">
+      <div class="form-group col-md-4 col-xs-12">
         {!!Form::label('Price', 'Price : ')!!}
         {!! Form::number('Price',$adv->price,['name'=>'Price','class'=>'form-control','min'=>'0','max'=>'20000']) !!}
       </div>
 
-      <div class="form-group col-xs-4">
+      <div class="form-group col-md-4 col-xs-12">
         {!!Form::label('Region', 'Region : ')!!}
         {!! Form::select('Region', ['Athens'=>'Athens','Thessaloniki'=>'Thessaloniki','Iraklio'=>'Iraklio','Rhodos'=>'Rhodos','Kozani'=>'Kozani'],$adv->region,['class'=>'form-control text-center']) !!}
       </div>
@@ -50,4 +50,5 @@
     {!! Form::close() !!}
 
   </div>
+  <br>
 @endsection
