@@ -76,13 +76,33 @@
       a,a:hover{
         color: black;
       }
+      .search_box{
+        outline: none;
+        background-color: #1D1F1F;
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .back-to-top {
+        cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display:none;
+        background-color:grey;
+        color:white;
+      }
+      .back-to-top:hover,.back-to-top:active{
+        background-color:black;
+        color:white;
+      }
     </style>
 </head>
 <body>
     <div id="app">
         @include('inc.navbar')
         @include('inc.messages')
-        <div class="container shadow" style="border-radius: 25px;">
+        <div class="container shadow" style="margin-top:65px;border-radius: 25px;">
             @yield('content')
         </div>
     </div>
@@ -97,10 +117,11 @@
       <strong>&copy; Copyright <?php echo (int)date('Y'); ?> P.k</strong>
     </div>
 
-
+<a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
     {{--image Modal pop script  --}}
     <script>
     $(function() {
@@ -110,16 +131,34 @@
       });
     });
     </script>
+
     {{-- Text editor for advertisement posts --}}
     <script>
     tinymce.init({ selector:'textarea',branding: false,height : 180,max_height: 200,browser_spellcheck: true });
     </script>
-    {{-- Just a Go back button script --}}
-    <script>
-      function goBack() {
-          window.history.back();
-      }
-    </script>
 
+    {{-- back to top button script --}}
+    <script>
+    $(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+      });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+
+        $('#back-to-top').tooltip('show');
+
+    });
+    </script>
 </body>
 </html>

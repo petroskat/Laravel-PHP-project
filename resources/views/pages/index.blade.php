@@ -3,19 +3,18 @@
 
 @section('content')
   <div class="jumbotron text-center row">
-    <h2>The best Advertisement app around !!</h2>
-    @if (Auth::guest())
-      <p>Welcome Guest .. feel free to browse ads Register and add yours !!</p>
-      <p>
-        <a class="btn btn-primary" href="/login" role="button">Login</a>
-        <a class="btn btn-success" href="/register" role="button">Register</a>
-      </p>
-    @else
-      <p>{{auth()->user()->name}}, welcome .. feel free to browse ads and add yours !!</p>
-    @endif
-    <hr><br>
-    <div class="">
       <div class='col-md-6 col-xs-12 text-center form-group'>
+        <h2>The best Advertisement app around !!</h2>
+        @if (Auth::guest())
+          <p>Welcome Guest .. feel free to browse ads Register and add yours !!</p>
+          <p>
+            <a class="btn btn-primary" href="/login" role="button">Login</a>
+            <a class="btn btn-success" href="/register" role="button">Register</a>
+          </p>
+        @else
+          <p>{{auth()->user()->name}}, welcome .. feel free to browse ads and add yours !!</p>
+        @endif
+        <hr>
         <h3><u><b>Search:</b></u></h3>
         {!! Form::open(['action'=>['SearchesController@search'],'method'=>'POST']) !!}
 
@@ -41,13 +40,24 @@
           {{Form::Submit('Search',['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
       </div>
-    </div>
+      
     <div class="col-md-2">
       {{-- just to fill the void --}}
     </div>
+
     <div class="sidebar col-md-4 col-xs-12 shadow" style="border-radius: 25px;">
       @include('inc.sidebar')
     </div>
   </div>
+  <script type="text/javascript" id="cookieinfo"
+	src="//cookieinfoscript.com/js/cookieinfo.min.js"
+	data-bg="#645862"
+	data-fg="#FFFFFF"
+	data-link="#F1D600"
+	data-cookie="CookieInfoScript"
+	data-text-align="left"
+  data-close-text="Got it!">
+</script>
+
 
 @endsection

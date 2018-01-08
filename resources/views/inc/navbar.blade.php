@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -21,19 +21,21 @@
               <li><a href="/services">Services</a></li>
               <li><a href="/advs">Advertisments</a></li>
             </ul>
+            {{-- search bar in the navbar  --}}
             <div class="col-sm-3 col-md-3 col-md-offset-1">
               <form class="navbar-form" role="search" action="/search/" method="GET">
                 <div class="input-group">
-                  <input class="form-control text-center" type="text" name="search" value="{{ Request::query('search') }}" placeholder="Search.."/>
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                  </div>
+                  <input class="form-control text-center search_box" type="text" name="search" value="{{ Request::query('search') }}" placeholder="Search.."/>
+                  <i class="glyphicon glyphicon-search form-control-feedback"></i>
                 </div>
               </form>
             </div>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+
+                <li><a class="" href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Home</a>
+                  </li>
                 <!-- Authentication Links -->
                 @guest
                     <li><a href="{{ route('login') }}">Login</a></li>
@@ -42,7 +44,7 @@
                     <li><a href="/advs/create">Create Advertisment</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ auth()->user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
