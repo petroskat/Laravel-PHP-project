@@ -45,39 +45,18 @@ class AdvsController extends Controller
       $this->validate($request,[
         'title' => 'required',
         'description' => 'required',
+        'Region' => 'required',
         'cover_image'=> 'image|nullable|max:1999',
         'Price' => 'required'
       ]);
 
-      // handle image upload
-      if ($request->hasFile('cover_image')) {
-        // get filename with extension.
-        $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-        // get just filename
-        $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
-        // now get the extension
-        $extension = $request->file('cover_image')->getClientOriginalExtension();
-        // filename to Store (with timestamp in order to be unique)
-        $filenameToStore = $filename."_".time().".".$extension;
-        //finally upload the image
-        $path = $request->file('cover_image')->storeAs('public/cover_image',$filenameToStore);
+      if (Adv::store_adv($request) == true) {
+        return redirect('/advs')->with('success','Advertisment sucessfully Created');
       }
       else {
-        $filenameToStore = 'no_image.jpg';
+        return redirect('/advs')->with('error','Something went Wrong_creating');
       }
 
-      // create Advertisment
-      $adv = new Adv;
-      $adv->title = $request->input('title');
-      $adv->body = $request->input('description');
-      $adv->user_id = auth()->user()->id;
-      $adv->cover_image = $filenameToStore;
-      $adv->category = $request->input('Category');
-      $adv->price = $request->input('Price');
-      $adv->region = $request->input('Region');
-      $adv->save();
-
-      return redirect('/advs')->with('success','Advertisment sucessfully Created');
     }
 
     /**
@@ -129,34 +108,18 @@ class AdvsController extends Controller
     {
       $this->validate($request,[
         'title' => 'required',
-        'description' => 'required'
+        'description' => 'required',
+        'Region' => 'required',
+        'cover_image'=> 'image|nullable|max:1999',
+        'Price' => 'required'
       ]);
-      // handle image upload
-      if ($request->hasFile('cover_image')) {
-        // get filename with extension.
-        $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-        // get just filename
-        $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
-        // now get the extension
-        $extension = $request->file('cover_image')->getClientOriginalExtension();
-        // filename to Store (with timestamp in order to be unique)
-        $filenameToStore = $filename."_".time().".".$extension;
-        //finally upload the image
-        $path = $request->file('cover_image')->storeAs('public/cover_image',$filenameToStore);
-      }
 
-      // Update Advertisment
-      $adv->title = $request->input('title');
-      $adv->body = $request->input('description');
-      if ($request->hasFile('cover_image')) {
-        $adv->cover_image = $filenameToStore;
+      if (Adv::update_adv($request,$id) == true) {
+        return redirect('/advs')->with('success','Advertisment sucessfully Updated');
       }
-      $adv->category = $request->input('Category');
-      $adv->price = $request->input('Price');
-      $adv->region = $request->input('Region');
-      $adv->save();
-
-      return redirect('/advs')->with('success','Advertisment sucessfully updated!!');
+      else {
+        return redirect('/advs')->with('error','Something went Wrong_updating');
+      }
     }
 
     /**
@@ -165,28 +128,18 @@ class AdvsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        $adv = Adv::find($id);
-        if (!$adv) {
-          return redirect('/')->with('error','Item does not exist or was removed :(');
-        }
-        //check if the user is the author so he can edit
-        if (auth()->user()->id == $adv->user_id) {
-          $adv->delete();
-          return redirect('/advs')->with('success','Advertisment sucessfully deleted!!');
-        }
-        // if the Advertisement has an image
-        if ($adv->cover_image != 'no_image.jpg') {
-          Storage::delete('public/cover_image/'.$adv->cover_image);
-        }
-        else {
-          return redirect('/advs')->with('error','You are sneaky , but you have no power here!!');
-        }
-
-
+      if (Adv::delete_adv($id) == true) {
+        return redirect('/advs')->with('success','Advertisment sucessfully removed');
+      }
+      else {
+        return redirect('/advs')->with('error','Something went Wrong_removing');
+      }
 
     }
+    
     public function sidebar()
     {
         return view('inc.sidebar');

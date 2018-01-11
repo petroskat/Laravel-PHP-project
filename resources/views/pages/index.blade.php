@@ -3,10 +3,10 @@
 
 @section('content')
   <div class="jumbotron text-center row">
-      <div class='col-md-6 col-xs-12 text-center form-group'>
-        <h2>The best Advertisement app around !!</h2>
+      <div class='col-md-6 col-xs-12 text-center form-group shadow' style="border-radius: 25px;">
+        <h2>The best Advertisement app around</h2>
         @if (Auth::guest())
-          <p>Welcome Guest .. feel free to browse ads Register and add yours !!</p>
+          <p>Welcome Guest .. feel free to browse ads Register and add yours</p>
           <p>
             <a class="btn btn-primary" href="/login" role="button">Login</a>
             <a class="btn btn-success" href="/register" role="button">Register</a>
@@ -39,8 +39,9 @@
           </div>
           {{Form::Submit('Search',['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
+        <br>
       </div>
-      
+
     <div class="col-md-2">
       {{-- just to fill the void --}}
     </div>

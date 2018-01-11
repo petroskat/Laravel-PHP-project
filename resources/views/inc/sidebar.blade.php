@@ -1,6 +1,5 @@
 
   <h3><u><b>Latest Advertisements</b></u></h3>
-  <hr>
 
   <div style="overflow-y: scroll; height:420px;" class="container">
     @if (count($advs) > 0)

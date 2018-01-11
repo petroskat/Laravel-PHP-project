@@ -29,24 +29,16 @@
         {{Form::label('description', 'Description')}}
         {{Form::textarea('description','',['class'=>'form-control','placeholder'=>'Description'])}}
       </div>
-      <table class="col-xs-12">
-        <tr>
-          <td>
-            <div class="form-group col-xs-12">
-            {{Form::file('cover_image')}}
-            </div>
-          </td>
+      <div class="col-xs-12">
+        <div class="form-group col-md-6 col-xs-12">
+          {!!Form::label('cover_image', 'Upload an image : ')!!}
+          {{Form::file('cover_image')}}
+        </div>
 
-          <td>
-            <div class="col-xs-12">
-            {{Form::submit('Submit',['class'=>'btn btn-primary pull-right'])}}
-          </div>
-        </td>
-      </tr>
-    </table>
-
-
-
+        <div class="col-md-6 col-xs-12">
+          {{Form::submit('Submit',['class'=>'btn btn-primary pull-right'])}}
+        </div>
+      </div>
 
     {!! Form::close() !!}
 

@@ -31,24 +31,40 @@
       </div>
       {{Form::hidden('_method','PUT')}}
 
-      <table class="col-xs-12">
-        <tr>
-          <td>
-            <div class="form-group col-xs-12">
-            {{Form::file('cover_image')}}
+      <div class="col-xs-12">
+        <div class="form-group col-md-4 col-xs-12">
+          {!!Form::label('cover_image', 'Upload an image : ')!!}
+          {{Form::file('cover_image')}}
+        </div>
+        <div class="col-md-4 col-xs-12">
+          @if ($adv->cover_image == 'no_image.jpg')
+            <div class="alert alert-warning">
+              <p>You currently dont have an image :(</p>
             </div>
-          </td>
-
-          <td>
-            <div class="col-xs-12">
-            {{Form::submit('Submit',['class'=>'btn btn-primary pull-right'])}}
-          </div>
-        </td>
-      </tr>
-    </table>
-
-    {!! Form::close() !!}
-
+            @else
+              <small>Your current image:  </small>
+              <a role="button" class="pop"><img height="80" width="60" class="img-thumbnail" src="/storage/cover_image/{{$adv->cover_image}}"alt="adv_image"></a>
+          @endif
+        </div>
+        <div class="col-md-4 col-xs-12">
+          {{Form::submit('Submit',['class'=>'btn btn-primary pull-right'])}}
+        </div>
+      </div>
   </div>
   <br>
+
+  {{-- Modal pop for image  --}}
+  <div class="modal fade" id="imagemodal" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-lg" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center">{{$adv->title}}</h4>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+    </div>
+  </div>
 @endsection

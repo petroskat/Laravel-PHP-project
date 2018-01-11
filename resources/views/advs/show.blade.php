@@ -9,7 +9,11 @@
           <td></td>
         </tr>
         <tr>
-          <td><a role="button" class="pop"><img height="180" width="320" src="/storage/cover_image/{{$adv->cover_image}}" alt="Advertisement_Image"></a></td>
+          @if ($adv->cover_image == 'no_image.jpg')
+            <td><img height="130" width="300" src="/storage/cover_image/{{$adv->cover_image}}" alt={{$adv->title}}></td>
+          @else
+            <td><a role="button" class="pop"><img height="130" width="250" src="/storage/cover_image/{{$adv->cover_image}}" alt={{$adv->title}}></a></td>
+          @endif
         </tr>
       </table>
     </div>
@@ -24,7 +28,7 @@
   </table>
   <br>
   <div class="container row">
-    <div class="jumbotron">
+    <div class="well">
       {!!$adv->body!!}
     </div>
 
@@ -56,13 +60,13 @@
   </div>
   {{-- Modal pop for image  --}}
   <div class="modal fade" id="imagemodal" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
           <button type="button" class="close btn-lg" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <img src="" class="imagepreview" style="width: 100%;" >
+        <img src="" class="imagepreview" style="width:100%;height:420px;" >
       </div>
       <div class="modal-footer">
         <h4 class="text-center">{{$adv->title}}</h4>
